@@ -21,26 +21,23 @@ public class Main {
         		list.addLast(Integer.parseInt(st.nextToken()));
         		break;
         	case "pop_front":
-                if(!list.isEmpty())
-        		    sb.append(list.pollFirst() + "\n");
+                sb.append(list.pollFirst() + "\n");
         		break;
         	case "pop_back":
-                if(!list.isEmpty())
-            		sb.append(list.pollLast() + "\n");
+                sb.append(list.pollLast() + "\n");
         		break;
         	case "size":
         		sb.append(list.size() + "\n");
         		break;
         	case "empty":
-        		sb.append(list.isEmpty()? 1 : 0 + "\n");
+                int num = list.isEmpty() ? 1 : 0;
+        		sb.append(num + "\n");
         		break;
         	case "front":
-                if(!list.isEmpty())
-            		sb.append(list.peekFirst() + "\n");
+                sb.append(list.peekFirst() + "\n");
         		break;
         	case "back":
-                if(!list.isEmpty())
-        		    sb.append(list.peekLast() + "\n");
+                sb.append(list.peekLast() + "\n");
         		break;
         	}
         }
