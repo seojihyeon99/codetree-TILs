@@ -1,10 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.StringTokenizer;
-
+import java.io.*;
+import java.util.*;
 
 /**
  * L은 포인터 좌로 이동, R은 포인터 우로 이동 => 좌우로 포인터 이동 편해야 하므로, Iterator 써서 prev, next 활용해야겠다.
@@ -12,17 +7,15 @@ import java.util.StringTokenizer;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(System.in);
         StringBuilder sb = new StringBuilder();
         
-    	
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken()); // 식빵의 개수
-        int m = Integer.parseInt(st.nextToken()); // 암호문의 개수
+        int n = sc.nextInt(); // 식빵의 개수
+        int m = sc.nextInt(); // 암호문의 개수
         
         // 식빵에 적힌 알파벳 입력 받기
         LinkedList<Character> l = new LinkedList<>();
-        String s = br.readLine();
+        String s = sc.next();
         for(int i=0; i<n; i++) {
         	l.add(s.charAt(i));
         }
@@ -30,8 +23,7 @@ public class Main {
         ListIterator<Character> it = l.listIterator(l.size()); // 가리키는 위치는 처음에 모든 빵의 맨 마지막에 위치
         // 연산 입력 받아, 연산 수행하기
         for(int i=0; i<m; i++) {
-        	st = new StringTokenizer(br.readLine());
-        	char op = st.nextToken().charAt(0);
+        	char op = sc.next().charAt(0);
         	
         	switch(op) {
     		case 'L':
@@ -47,7 +39,7 @@ public class Main {
     			}
     			break;
     		case 'P':
-    			char c = st.nextToken().charAt(0);
+    			char c = sc.next().charAt(0);
     			it.add(c);
     			break;
         	}
