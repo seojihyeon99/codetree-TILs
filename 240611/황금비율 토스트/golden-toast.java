@@ -1,5 +1,10 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.StringTokenizer;
+
 
 /**
  * L은 포인터 좌로 이동, R은 포인터 우로 이동 => 좌우로 포인터 이동 편해야 하므로, Iterator 써서 prev, next 활용해야겠다.
@@ -26,22 +31,22 @@ public class Main {
         // 연산 입력 받아, 연산 수행하기
         for(int i=0; i<m; i++) {
         	st = new StringTokenizer(br.readLine());
-        	String op = st.nextToken();
+        	char op = st.nextToken().charAt(0);
         	
         	switch(op) {
-    		case "L":
+    		case 'L':
     			if(it.hasPrevious()) it.previous();
     			break;
-    		case "R":
+    		case 'R':
     			if(it.hasNext()) it.next();
     			break;
-    		case "D":
+    		case 'D':
     			if(it.hasNext()) {
     				it.next();
     				it.remove();
     			}
     			break;
-    		case "P":
+    		case 'P':
     			char c = st.nextToken().charAt(0);
     			it.add(c);
     			break;
