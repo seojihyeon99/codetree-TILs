@@ -19,6 +19,7 @@ public class Main {
 	
     public static void main(String[] args) throws IOException {    	
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StringBuilder sb = new StringBuilder();
     	
     	n = Integer.parseInt(br.readLine()); // 원소의 개수
     	
@@ -33,9 +34,11 @@ public class Main {
     	// 병합 정렬 시작
     	mergeSort(arr, 0, n-1);
     	
+    	// 출력
     	for(int i=0; i<n; i++) {
-    		System.out.print(arr[i] + " ");
+    		sb.append(arr[i] + " ");
     	}
+    	System.out.println(sb);
     }
     
     // l~r에 대해서 병합 정렬 하는 함수
