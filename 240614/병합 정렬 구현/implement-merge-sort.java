@@ -1,6 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.StringTokenizer;
 
 /**
@@ -15,7 +19,6 @@ public class Main {
 	
     public static void main(String[] args) throws IOException {    	
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
     	
     	n = Integer.parseInt(br.readLine()); // 원소의 개수
     	
@@ -29,12 +32,10 @@ public class Main {
     	
     	// 병합 정렬 시작
     	mergeSort(arr, 0, n-1);
-
-        // 출력    	
+    	
     	for(int i=0; i<n; i++) {
-    		sb.append(arr[i] + " ");
+    		System.out.print(arr[i] + " ");
     	}
-        System.out.println(sb);
     }
     
     // l~r에 대해서 병합 정렬 하는 함수
@@ -51,27 +52,28 @@ public class Main {
     	int i = l;
     	int j = m+1;
     	int k = l;
-    	int[] sortedArr = new int[n];
+    	List<Integer> list = new LinkedList<>();
     	
     	while(i<=m && j<=r) {
     		if(arr[i] <= arr[j]) {
-    			sortedArr[k++] = arr[i++];		
+    			list.add(arr[i++]);		
     		} else {
-    			sortedArr[k++] = arr[j++];
+    			list.add(arr[j++]);
     		}
     	}
     	
     	while(i<=m) {
-    		sortedArr[k++] = arr[i++];
+    		list.add(arr[i++]);
     	}
     	
     	while(j<=r) {
-    		sortedArr[k++] = arr[j++];
+    		list.add(arr[j++]);
     	}
     	
     	// 정렬된 부분을 원 배열로 복사
-    	for(int idx=l; idx<=r; idx++) {
-    		arr[idx] = sortedArr[idx];
+    	ListIterator<Integer> it = list.listIterator();
+    	while(it.hasNext()) {
+    		arr[k++] = it.next();
     	}
     }
 }
